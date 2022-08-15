@@ -1,8 +1,12 @@
 import styles from './header.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
+import {
+    faUser,
+    faMagnifyingGlass,
+    faShoppingBag,
+} from '@fortawesome/free-solid-svg-icons';
+import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -34,9 +38,38 @@ function Header() {
                             ></FontAwesomeIcon>
                         </button>
                     </div>
-                    <div className={cx('action')}>action</div>
+                    <div className={cx('action')}>
+                        <Button className={cx('action-item')} to={'/account'}>
+                            {<FontAwesomeIcon icon={faUser}></FontAwesomeIcon>}
+                        </Button>
+                        <Button className={cx('action-item')}>
+                            {
+                                <FontAwesomeIcon
+                                    icon={faMagnifyingGlass}
+                                ></FontAwesomeIcon>
+                            }
+                        </Button>
+                        <Button className={cx('action-item')}>
+                            {
+                                <FontAwesomeIcon
+                                    icon={faShoppingBag}
+                                ></FontAwesomeIcon>
+                            }
+                        </Button>
+                    </div>
                 </div>
-                <div className={cx('header-menu')}></div>
+                <div className={cx('header-menu')}>
+                    <Button className={cx('header-mennu-item')}>
+                        Giới Thiệu
+                    </Button>
+                    <Button className={cx('header-mennu-item')}>
+                        Sản phẩm
+                    </Button>
+                    <Button className={cx('header-mennu-item')}>
+                        Khuyến mãi
+                    </Button>
+                    <Button className={cx('header-mennu-item')}>Tin tức</Button>
+                </div>
             </div>
         </header>
     );

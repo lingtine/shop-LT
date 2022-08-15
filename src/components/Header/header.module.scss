@@ -25,7 +25,6 @@
     display: flex;
     justify-content: space-between;
     padding-left: 28px;
-    border-radius: 64px;
 }
 .header-input {
     font-size: 1.4rem;
@@ -46,5 +45,25 @@
     background-color: transparent;
     &:hover {
         opacity: 0.6;
+    }
+}
+
+.action-item {
+    padding: 8px;
+    font-size: 2rem;
+    margin-right: 8px;
+}
+
+.header-menu {
+    display: flex;
+    justify-content: center;
+    .header-mennu-item {
+        padding: 8px;
+        margin: 0 16px;
+        font-size: 1.6rem;
+        &:hover {
+            color: #f94c43;
+            border-bottom: 1px solid #f94c43;
+        }
     }
 }
