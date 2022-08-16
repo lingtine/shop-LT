@@ -19,14 +19,16 @@ function Header() {
                 </p>
             </div>
             <div className={cx('header-main')}>
-                <div className={cx('header-mid')}>
-                    <img
-                        className={cx('header-logo')}
-                        src={
-                            'https://360boutique.vn/wp-content/uploads/2021/10/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png'
-                        }
-                        alt={'logo'}
-                    />
+                <div className={cx('header-mid', 'header-main-separate')}>
+                    <Button to={'/'}>
+                        <img
+                            className={cx('header-logo')}
+                            src={
+                                'https://360boutique.vn/wp-content/uploads/2021/10/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png'
+                            }
+                            alt={'logo'}
+                        />
+                    </Button>
                     <div className={cx('header-search')}>
                         <input
                             className={cx('header-input')}
@@ -58,17 +60,20 @@ function Header() {
                         </Button>
                     </div>
                 </div>
-                <div className={cx('header-menu')}>
-                    <Button className={cx('header-mennu-item')}>
+
+                <div className={cx('header-menu', 'header-main-separate')}>
+                    <Button to={'/about-us'} className={cx('header-menu-item')}>
                         Giới Thiệu
                     </Button>
-                    <Button className={cx('header-mennu-item')}>
+                    <Button to={'/product'} className={cx('header-menu-item')}>
                         Sản phẩm
                     </Button>
-                    <Button className={cx('header-mennu-item')}>
+                    <Button to={'/sales'} className={cx('header-menu-item')}>
                         Khuyến mãi
                     </Button>
-                    <Button className={cx('header-mennu-item')}>Tin tức</Button>
+                    <Button to={'/news'} className={cx('header-menu-item')}>
+                        Tin tức
+                    </Button>
                 </div>
             </div>
         </header>

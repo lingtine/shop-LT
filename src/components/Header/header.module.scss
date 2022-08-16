@@ -54,10 +54,15 @@
     margin-right: 8px;
 }
 
+.header-main-separate {
+    border-bottom: 1px solid #f3f3f3;
+}
+
 .header-menu {
     display: flex;
     justify-content: center;
-    .header-mennu-item {
+    padding: 8px;
+    .header-menu-item {
         padding: 8px;
         margin: 0 16px;
         font-size: 1.6rem;

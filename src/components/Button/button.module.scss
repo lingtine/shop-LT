@@ -2,3 +2,16 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.primary {
+    background-color: #000;
+    color: #fff;
+    padding: 13px 25px;
+
+    border: 1px solid #000;
+    text-transform: uppercase;
+    &:hover {
+        color: #000;
+        background-color: transparent;
+    }
+}

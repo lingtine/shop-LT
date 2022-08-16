@@ -3,10 +3,11 @@ import styles from './button.module.scss';
 import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
-function Button({ href, to, children, className, ...passProps }) {
+function Button({ href, to, children, primary, className, ...passProps }) {
     let Comp = 'button';
 
     const classes = cx('wrapper', {
+        primary,
         [className]: className,
     });
 
