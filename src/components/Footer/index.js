@@ -70,74 +70,70 @@ function Footer() {
                     <span>Hỗ trợ / Mua hàng: 0908090744</span>
                 </div>
             </div>
-            <div className={cx('footer-mid', 'grid', 'wide')}>
-                <div className={cx('row')}>
-                    <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
-                        <h4 className={cx('footer-mid-title')}>
-                            HỆ THỐNG CỬA HÀNG
-                        </h4>
-                        {workplace.map((homeWork, index) => {
-                            return (
-                                <p
-                                    className={cx('footer-mid-item')}
-                                    key={index}
-                                >
-                                    {homeWork}
-                                </p>
-                            );
-                        })}
-                    </div>
-                    <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
-                        <h4 className={cx('footer-mid-title')}>
-                            CHÍNH SÁCH VÀ QUY ĐỊNH CHUNG
-                        </h4>
-                        {generalPolicies.map((homeWork, index) => {
-                            return (
-                                <p
-                                    className={cx('footer-mid-item')}
-                                    key={index}
-                                >
-                                    {homeWork}
-                                </p>
-                            );
-                        })}
-                    </div>
-                    <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
-                        <h4 className={cx('footer-mid-title')}>ĐỊA CHỈ</h4>
-                        {contactUs.map((homeWork, index) => {
-                            return (
-                                <p
-                                    className={cx('footer-mid-item')}
-                                    key={index}
-                                >
-                                    {homeWork}
-                                </p>
-                            );
-                        })}
-                        <img
-                            class="alignnone size-full wp-image-11729 lazyloaded"
-                            src="https://360boutique.vn/wp-content/uploads/2019/04/da-thong-bao.png"
-                            alt=""
-                            width="185"
-                            height="58"
-                            data-was-processed="true"
-                            srcset="https://360boutique.vn/wp-content/uploads/2019/04/da-thong-bao.png 434w, https://360boutique.vn/wp-content/uploads/2019/04/da-thong-bao-32x10.png 32w"
-                            sizes="(max-width: 185px) 100vw, 185px"
-                            data-ll-status="loaded"
-                        ></img>
-                    </div>
-                    <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
-                        <h4 className={cx('footer-mid-title')}>Fanpage</h4>
-                        {workplace.map((homeWork, index) => {
-                            return (
-                                <p
-                                    className={cx('footer-mid-item')}
-                                    key={index}
-                                >
-                                    {homeWork}
-                                </p>
-                            );
-                        })}
+            <div className={cx('footer-mid')}>
+                <div className={cx('grid', 'wide')}>
+                    <div className={cx('row')}>
+                        <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
+                            <h4 className={cx('footer-mid-title')}>
+                                HỆ THỐNG CỬA HÀNG
+                            </h4>
+                            {workplace.map((homeWork, index) => {
+                                return (
+                                    <p
+                                        className={cx('footer-mid-item')}
+                                        key={index}
+                                    >
+                                        {homeWork}
+                                    </p>
+                                );
+                            })}
+                        </div>
+                        <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
+                            <h4 className={cx('footer-mid-title')}>
+                                CHÍNH SÁCH VÀ QUY ĐỊNH CHUNG
+                            </h4>
+                            {generalPolicies.map((homeWork, index) => {
+                                return (
+                                    <p
+                                        className={cx('footer-mid-item')}
+                                        key={index}
+                                    >
+                                        {homeWork}
+                                    </p>
+                                );
+                            })}
+                        </div>
+                        <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
+                            <h4 className={cx('footer-mid-title')}>ĐỊA CHỈ</h4>
+                            {contactUs.map((homeWork, index) => {
+                                return (
+                                    <p
+                                        className={cx('footer-mid-item')}
+                                        key={index}
+                                    >
+                                        {homeWork}
+                                    </p>
+                                );
+                            })}
+                            <img
+                                className={cx('contact-img')}
+                                src="https://360boutique.vn/wp-content/uploads/2019/04/da-thong-bao.png"
+                                alt=""
+                            ></img>
+                        </div>
+                        <div className={cx('col', 'l-3', 'm-6', 'c-12')}>
+                            <h4 className={cx('footer-mid-title')}>Fanpage</h4>
+                            {workplace.map((homeWork, index) => {
+                                return (
+                                    <p
+                                        className={cx('footer-mid-item')}
+                                        key={index}
+                                    >
+                                        {homeWork}
+                                    </p>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
