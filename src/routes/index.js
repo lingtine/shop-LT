@@ -1,12 +1,14 @@
-import { Home, News, Product, AboutUs } from '~/pages';
-import { DefaultLayout } from '~/layouts';
+import { Home, News, Product, AboutUs, Account } from '~/pages';
+import { DefaultLayout, HaveSlideBar } from '~/layouts';
 
 const privateRoutes = [];
 const publicRoutes = [
     { path: '/', component: Home, layout: DefaultLayout },
-    { path: '/news', component: News, layout: DefaultLayout },
+    { path: '/about-us', component: AboutUs, layout: HaveSlideBar },
+    { path: '/news', component: News, layout: HaveSlideBar },
+    { path: '/account', component: Account, layout: DefaultLayout },
+    { path: '/sales', component: Product, layout: DefaultLayout },
     { path: '/product', component: Product, layout: DefaultLayout },
-    { path: '/about-us', component: AboutUs, layout: DefaultLayout },
 ];
 
 export { privateRoutes, publicRoutes };

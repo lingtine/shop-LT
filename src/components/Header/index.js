@@ -1,15 +1,135 @@
 import styles from './header.module.scss';
 import classNames from 'classnames/bind';
+import Tippy from '@tippyjs/react/headless';
+import 'tippy.js/themes/light.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faUser,
     faMagnifyingGlass,
     faShoppingBag,
+    faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 
 function Header() {
+    const menuSubProduct = [
+        {
+            content: 'Áo Nam',
+            type: [
+                { describe: 'Áo Polo', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Phông', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Dài Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                {
+                    describe: 'Áo Sơ Mi Ngắn Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                { describe: 'Áo Nỉ', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Hoodie', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Khoác', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Vest', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Họa Tiết',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+            ],
+        },
+        {
+            content: 'Áo Nam',
+            type: [
+                { describe: 'Áo Polo', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Phông', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Dài Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                {
+                    describe: 'Áo Sơ Mi Ngắn Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                { describe: 'Áo Nỉ', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Hoodie', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Khoác', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Vest', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Họa Tiết',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+            ],
+        },
+        {
+            content: 'Áo Nam',
+            type: [
+                { describe: 'Áo Polo', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Phông', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Dài Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                {
+                    describe: 'Áo Sơ Mi Ngắn Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                { describe: 'Áo Nỉ', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Hoodie', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Khoác', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Vest', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Họa Tiết',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+            ],
+        },
+        {
+            content: 'Áo Nam',
+            type: [
+                { describe: 'Áo Polo', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Phông', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Dài Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                {
+                    describe: 'Áo Sơ Mi Ngắn Tay',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+                { describe: 'Áo Nỉ', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Hoodie', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Khoác', to: 'hello', icon: faAngleRight },
+                { describe: 'Áo Vest', to: 'hello', icon: faAngleRight },
+                {
+                    describe: 'Áo Sơ Mi Họa Tiết',
+                    to: 'hello',
+                    icon: faAngleRight,
+                },
+            ],
+        },
+    ];
+
+    const optionSales = [
+        { to: '/', numberPercentSale: 50 },
+        { to: '/', numberPercentSale: 60 },
+        { to: '/', priceSale: 89 },
+        { to: '/', priceSale: 99 },
+        { to: '/', priceSale: 149 },
+        { to: '/', priceSale: 299 },
+    ];
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('top-bar')}>
@@ -34,6 +154,7 @@ function Header() {
                             className={cx('header-input')}
                             placeholder="Tìm kiếm sản phẩm"
                         ></input>
+
                         <button className={cx('header-search--icon')}>
                             <FontAwesomeIcon
                                 icon={faMagnifyingGlass}
@@ -65,12 +186,84 @@ function Header() {
                     <Button to={'/about-us'} className={cx('header-menu-item')}>
                         Giới Thiệu
                     </Button>
-                    <Button to={'/product'} className={cx('header-menu-item')}>
-                        Sản phẩm
-                    </Button>
-                    <Button to={'/sales'} className={cx('header-menu-item')}>
-                        Khuyến mãi
-                    </Button>
+                    <Tippy
+                        interactive
+                        tabIndex={-1}
+                        placement={'bottom'}
+                        render={() => (
+                            <div
+                                tabIndex={-1}
+                                className={cx('nav-sub-product')}
+                            >
+                                {menuSubProduct.map((subProduct) => (
+                                    <div className={cx('product-container')}>
+                                        <h3>{subProduct.content}</h3>
+                                        <ul>
+                                            {subProduct.type.map((product) => (
+                                                <li>
+                                                    <Button
+                                                        className={cx(
+                                                            'product-item',
+                                                        )}
+                                                        leftIcon={
+                                                            <FontAwesomeIcon
+                                                                icon={
+                                                                    product.icon
+                                                                }
+                                                            />
+                                                        }
+                                                    >
+                                                        {product.describe}
+                                                    </Button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    >
+                        <Button
+                            to={'/product'}
+                            className={cx('header-menu-item')}
+                        >
+                            Sản phẩm
+                        </Button>
+                    </Tippy>
+
+                    <Tippy
+                        interactive
+                        placement="bottom"
+                        tabIndex={-1}
+                        render={() => (
+                            <div className={cx('sale-sub-menu')}>
+                                <ul>
+                                    {optionSales.map((option) => (
+                                        <li>
+                                            <Button
+                                                className={cx('option-sale')}
+                                            >
+                                                {option.priceSale
+                                                    ? 'Sale đồng giá ' +
+                                                      option.priceSale +
+                                                      'k'
+                                                    : 'Sale ' +
+                                                      option.numberPercentSale +
+                                                      '%'}
+                                            </Button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    >
+                        <Button
+                            to={'/sales'}
+                            className={cx('header-menu-item')}
+                        >
+                            Khuyến mãi
+                        </Button>
+                    </Tippy>
                     <Button to={'/news'} className={cx('header-menu-item')}>
                         Tin tức
                     </Button>

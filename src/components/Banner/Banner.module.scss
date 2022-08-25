@@ -1,0 +1,25 @@
+.wrapper {
+    width: 100%;
+    height: 633px;
+}
+
+.banner {
+    width: 100%;
+}
+
+.banner-img {
+    background-size: cover;
+    width: 100%;
+    animation: slideUp 1s ease-in;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50%);
+        opacity: 0.4;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

@@ -1,9 +1,22 @@
 import classNames from 'classnames/bind';
 import styles from './button.module.scss';
 import { Link } from 'react-router-dom';
+import { forwardRef } from 'react';
 const cx = classNames.bind(styles);
 
-function Button({ href, to, children, primary, className, ...passProps }) {
+function Button(
+    {
+        href,
+        to,
+        children,
+        primary,
+        className,
+        leftIcon,
+        rightIcon,
+        ...passProps
+    },
+    ref,
+) {
     let Comp = 'button';
 
     const classes = cx('wrapper', {
@@ -21,10 +34,12 @@ function Button({ href, to, children, primary, className, ...passProps }) {
         props.href = href;
     }
     return (
-        <Comp className={classes} {...props} {...passProps}>
-            {children}
+        <Comp className={classes} {...props} ref={ref} {...passProps}>
+            <span className={cx('icon')}>{leftIcon}</span>
+            <span className={cx('content')}>{children}</span>
+            <span className={cx('icon')}>{rightIcon}</span>
         </Comp>
     );
 }
 
-export default Button;
+export default forwardRef(Button);
