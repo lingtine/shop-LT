@@ -5,7 +5,7 @@
 }
 
 .grid.wide {
-    max-width: 1400px;
+    max-width: 1250px;
     margin: 0 auto;
 }
 
@@ -303,12 +303,12 @@
 
 @media (min-width: 1113px) {
     .row {
-        margin-right: -12px;
-        margin-left: -12px;
+        margin-right: -15px;
+        margin-left: -15px;
     }
     .col {
-        padding-left: -12px;
-        padding-right: -12px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .l-1,
@@ -455,13 +455,13 @@
         width: 984px;
     }
     .wide .row {
-        margin-left: -12px;
-        margin-right: -12px;
+        margin-left: -20px;
+        margin-right: -20px;
     }
 
     .wide .col {
-        padding-left: -12px;
-        padding-right: -12px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .wide .l-1,
