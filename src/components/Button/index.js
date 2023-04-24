@@ -9,6 +9,7 @@ const Button = forwardRef(
         {
             href,
             to,
+            onClick,
             children,
             primary,
             className,

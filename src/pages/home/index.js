@@ -1,7 +1,7 @@
 import Styles from './home.module.scss';
 import classNames from 'classnames/bind';
 
-import { Banner, ProductItem } from '~/components';
+import { Slider, ProductItem } from '~/components';
 
 const cx = classNames.bind(Styles);
 function Home() {
@@ -178,10 +178,8 @@ function Home() {
     ];
 
     return (
-        <div>
-            {/* Banner start */}
-            <Banner />
-            {/* Banner end */}
+        <div className={cx('wrapper')}>
+            <Slider />
 
             {/* Best seller start */}
 
@@ -192,8 +190,11 @@ function Home() {
                             sản phẩm bán chạy
                         </h4>
                     </div>
-                    {listProductBestSeller.map((product) => (
-                        <div className={cx('col', 'c-3', 'm-3', 'l-3')}>
+                    {listProductBestSeller.map((product, index) => (
+                        <div
+                            key={index}
+                            className={cx('col', 'c-3', 'm-3', 'l-3')}
+                        >
                             <ProductItem product={product} />
                         </div>
                     ))}
@@ -207,8 +208,11 @@ function Home() {
                     <div className={cx('col', 'c-12', 'm-12', 'l-12')}>
                         <h4 className={cx('content-heading')}>hàng mới về</h4>
                     </div>
-                    {listProductNew.map((product) => (
-                        <div className={cx('col', 'c-3', 'm-3', 'l-3')}>
+                    {listProductNew.map((product, index) => (
+                        <div
+                            key={index}
+                            className={cx('col', 'c-3', 'm-3', 'l-3')}
+                        >
                             <ProductItem product={product} />
                         </div>
                     ))}
@@ -223,8 +227,8 @@ function Home() {
                     <div className={cx('col', 'c-12', 'm-12', 'l-12')}>
                         <h4 className={cx('content-heading')}>tin tức</h4>
                     </div>
-                    {listNews.map((news) => (
-                        <div className={cx('col', 'l-4')}>
+                    {listNews.map((news, index) => (
+                        <div key={index} className={cx('col', 'l-4')}>
                             <div className={cx('news')}>
                                 <img src={news.img} />
                                 <div className={cx('content')}>

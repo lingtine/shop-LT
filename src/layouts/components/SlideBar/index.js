@@ -1,6 +1,6 @@
 import styles from './SlideBar.module.scss';
 import classNames from 'classnames/bind';
-import Button from '../Button';
+import Button from '~/components';
 
 const cx = classNames.bind(styles);
 
@@ -37,8 +37,8 @@ function SlideBar() {
         <div className={cx('wrapper')}>
             <div className={cx('new-posts')}>
                 <h3>BÀI VIẾT MỚI NHẤT</h3>
-                {newPosts.map((newPost) => (
-                    <div className={cx('new-post')}>
+                {newPosts.map((newPost, index) => (
+                    <div key={index} className={cx('new-post')}>
                         <img src={newPost.img} />
                         <div className={cx('new-post--content')}>
                             <h5>{newPost.name}</h5>

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { Header, Footer } from '~/components';
+import { Header, Footer } from '~/layouts/components';
 
 const cx = classNames.bind();
 

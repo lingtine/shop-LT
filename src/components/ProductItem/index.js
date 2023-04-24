@@ -1,6 +1,6 @@
 import Styles from './ProductItem.module.scss';
 import classNames from 'classnames/bind';
-import { Button } from '~/components';
+import { Button, Image } from '~/components';
 const cx = classNames.bind(Styles);
 
 function ProductItem({ product }) {
@@ -8,7 +8,7 @@ function ProductItem({ product }) {
     return (
         <div className={cx('wrapper')}>
             <Button>
-                <img src={product.img} />
+                <Image className={cx('product-img')} src={product.img} />
 
                 <div className={cx('content')}>
                     <span className={cx('name')}>{product.name}</span>

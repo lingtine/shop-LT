@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
-import { Header, Footer } from '~/components';
-import SlideBar from '~/components/SlideBar';
+import { Header, Footer, SlideBar } from '~/layouts/components';
 
 const cx = classNames.bind();
 

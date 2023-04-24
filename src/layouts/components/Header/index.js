@@ -1,8 +1,6 @@
 import styles from './header.module.scss';
-import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/themes/light.css';
-
+import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faUser,
@@ -10,10 +8,24 @@ import {
     faShoppingBag,
     faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import Button from '~/components/Button';
+import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+
+import routers from '~/config/routers';
+import { Button, Image, Search } from '~/components';
+
 const cx = classNames.bind(styles);
 
 function Header() {
+    const optionSales = [
+        { to: '/', numberPercentSale: 50 },
+        { to: '/', numberPercentSale: 60 },
+        { to: '/', priceSale: 89 },
+        { to: '/', priceSale: 99 },
+        { to: '/', priceSale: 149 },
+        { to: '/', priceSale: 299 },
+    ];
+
     const menuSubProduct = [
         {
             content: 'Áo Nam',
@@ -120,18 +132,36 @@ function Header() {
             ],
         },
     ];
+    const [isMobile, setIsMobile] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [heightHeader, setHeightHeader] = useState();
+    const headerRef = useRef(null);
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+    useEffect(() => {
+        if (scrollPosition > heightHeader) setIsMobile(true);
+        else setIsMobile(false);
+    }, [scrollPosition]);
 
-    const optionSales = [
-        { to: '/', numberPercentSale: 50 },
-        { to: '/', numberPercentSale: 60 },
-        { to: '/', priceSale: 89 },
-        { to: '/', priceSale: 99 },
-        { to: '/', priceSale: 149 },
-        { to: '/', priceSale: 299 },
-    ];
+    useEffect(() => {
+        setHeightHeader(headerRef.current.clientHeight);
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
-        <header className={cx('wrapper')}>
+        <header
+            ref={headerRef}
+            className={cx('wrapper', {
+                'affix-mobile': isMobile,
+            })}
+        >
             <div className={cx('top-bar')}>
                 <p>
                     Hotline Mua Hàng: 0973 285 886 | Hotline CSKH: 1900 886 803
@@ -140,29 +170,23 @@ function Header() {
             </div>
             <div className={cx('header-main')}>
                 <div className={cx('header-mid', 'header-main-separate')}>
-                    <Button to={'/'}>
-                        <img
+                    <Link to={routers.root} className={cx('header-logo-link')}>
+                        <Image
                             className={cx('header-logo')}
                             src={
                                 'https://360boutique.vn/wp-content/uploads/2021/10/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png'
                             }
                             alt={'logo'}
                         />
-                    </Button>
-                    <div className={cx('header-search')}>
-                        <input
-                            className={cx('header-input')}
-                            placeholder="Tìm kiếm sản phẩm"
-                        ></input>
+                    </Link>
 
-                        <button className={cx('header-search--icon')}>
-                            <FontAwesomeIcon
-                                icon={faMagnifyingGlass}
-                            ></FontAwesomeIcon>
-                        </button>
-                    </div>
+                    <Search classNames={cx('header-search')} />
+
                     <div className={cx('action')}>
-                        <Button className={cx('action-item')} to={'/account'}>
+                        <Button
+                            className={cx('action-item')}
+                            to={routers.account}
+                        >
                             {<FontAwesomeIcon icon={faUser}></FontAwesomeIcon>}
                         </Button>
                         <Button className={cx('action-item')}>
@@ -183,90 +207,56 @@ function Header() {
                 </div>
 
                 <div className={cx('header-menu', 'header-main-separate')}>
-                    <Button to={'/about-us'} className={cx('header-menu-item')}>
-                        Giới Thiệu
-                    </Button>
-                    <Tippy
-                        interactive
-                        tabIndex={-1}
-                        placement={'bottom'}
-                        render={() => (
-                            <div
-                                tabIndex={-1}
-                                className={cx('nav-sub-product')}
-                            >
-                                {menuSubProduct.map((subProduct) => (
-                                    <div className={cx('product-container')}>
-                                        <h3>{subProduct.content}</h3>
-                                        <ul>
-                                            {subProduct.type.map((product) => (
-                                                <li>
-                                                    <Button
-                                                        className={cx(
-                                                            'product-item',
-                                                        )}
-                                                        leftIcon={
-                                                            <FontAwesomeIcon
-                                                                icon={
-                                                                    product.icon
-                                                                }
-                                                            />
-                                                        }
-                                                    >
-                                                        {product.describe}
-                                                    </Button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    >
-                        <Button
-                            to={'/product'}
-                            className={cx('header-menu-item')}
+                    {isMobile && (
+                        <Link
+                            to={routers.root}
+                            className={cx('header-logo-link')}
                         >
-                            Sản phẩm
-                        </Button>
-                    </Tippy>
+                            <Image
+                                className={cx('header-logo')}
+                                src={
+                                    'https://360boutique.vn/wp-content/uploads/2021/10/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png'
+                                }
+                                alt={'logo'}
+                            />
+                        </Link>
+                    )}
 
-                    <Tippy
-                        interactive
-                        placement="bottom"
-                        tabIndex={-1}
-                        render={() => (
-                            <div className={cx('sale-sub-menu')}>
-                                <ul>
-                                    {optionSales.map((option) => (
-                                        <li>
-                                            <Button
-                                                className={cx('option-sale')}
-                                            >
-                                                {option.priceSale
-                                                    ? 'Sale đồng giá ' +
-                                                      option.priceSale +
-                                                      'k'
-                                                    : 'Sale ' +
-                                                      option.numberPercentSale +
-                                                      '%'}
-                                            </Button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                    >
-                        <Button
-                            to={'/sales'}
-                            className={cx('header-menu-item')}
-                        >
-                            Khuyến mãi
-                        </Button>
-                    </Tippy>
-                    <Button to={'/news'} className={cx('header-menu-item')}>
-                        Tin tức
-                    </Button>
+                    <div className={cx('options-menu')}>
+                        <div className={cx('option-menu')}>
+                            <Link
+                                className={cx('header-menu-item')}
+                                to={routers.aboutUs}
+                            >
+                                Giới Thiệu
+                            </Link>
+                        </div>
+                        <div className={cx('option-menu')}>
+                            <Link
+                                className={cx('header-menu-item')}
+                                to={routers.product}
+                            >
+                                Sản phẩm
+                            </Link>
+                        </div>
+                        <div className={cx('option-menu')}>
+                            <Link
+                                className={cx('header-menu-item')}
+                                to={routers.sales}
+                            >
+                                Khuyến mãi
+                            </Link>
+                        </div>
+
+                        <div className={cx('option-menu')}>
+                            <Link
+                                className={cx('header-menu-item')}
+                                to={routers.news}
+                            >
+                                Tin tức
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>

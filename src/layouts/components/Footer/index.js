@@ -4,8 +4,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
-import Button from '../Button';
+import { Button } from '~/components';
 import styles from './Footer.module.scss';
 
 const cx = classNames.bind(styles);
